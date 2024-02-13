@@ -1,9 +1,9 @@
 ﻿namespace blog_api;
 
-public class Post
+public class Post : BaseEntity
 {
-    public int Id { get; set; }
-    public int UserId { get; set; }
     public string Title { get; set; } = null!;
     public string? Body { get; set; }
+    public User User { get; set; } = null!;
+    public int UserId { get; set; }
 }
