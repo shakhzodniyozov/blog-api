@@ -18,6 +18,11 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         db.Set<T>().Add(entity);
     }
 
+    public void Create(IEnumerable<T> entities)
+    {
+        db.Set<T>().AddRange(entities);
+    }
+
     public void Delete(T entity)
     {
         db.Set<T>().Remove(entity);

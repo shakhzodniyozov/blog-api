@@ -1,4 +1,5 @@
-﻿namespace blog_api;
+﻿
+namespace blog_api;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 {

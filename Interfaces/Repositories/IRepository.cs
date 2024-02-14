@@ -5,6 +5,7 @@ namespace blog_api;
 public interface IRepository<T> where T : BaseEntity
 {
     void Create(T entity);
+    void Create(IEnumerable<T> entity);
     Task<T?> GetById(int id, string includeProperties = "", bool disableTracking = false);
     Task<List<T>> GetAll(Expression<Func<T, bool>> expression = null!, string includeProperties = "", bool disableTracking = false);
     void Update(T entity);
