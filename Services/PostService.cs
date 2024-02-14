@@ -39,7 +39,7 @@ public class PostService : IPostService
 
     public async Task<List<PostDto>> GetAllAsync()
     {
-        var posts = await repo.GetAll(disableTracking: true);
+        var posts = await repo.GetAll(includeProperties: "User", disableTracking: true);
 
         return mapper.Map<List<PostDto>>(posts);
     }
@@ -53,7 +53,7 @@ public class PostService : IPostService
 
     public async Task<List<PostDto>> GetUserPostsAsync(int userId)
     {
-        var posts = await repo.GetAll(x => x.UserId == userId, disableTracking: true);
+        var posts = await repo.GetAll(x => x.UserId == userId, "User", disableTracking: true);
 
         return mapper.Map<List<PostDto>>(posts);
     }

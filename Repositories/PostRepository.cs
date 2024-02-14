@@ -16,7 +16,7 @@ public class PostRepository : GenericRepository<Post>, IPostRepository
         if (disableTracking)
             query = query.AsNoTracking();
 
-        var posts = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+        var posts = await query.Include(x => x.User).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
         return posts;
     }
