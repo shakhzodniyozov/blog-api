@@ -50,7 +50,6 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
         IQueryable<T> query = db.Set<T>();
 
-
         if (disableTracking)
             query = query.AsNoTracking();
 

@@ -17,7 +17,8 @@ public class PostService : IPostService
 
     public async Task Create(CreatePostDto dto)
     {
-        var user = uow.UserRepository.GetById(dto.UserId);
+        var user = await uow.UserRepository.GetById(dto.UserId);
+
         if (user is null)
             throw new Exception("User with provided Id was not found.");
 

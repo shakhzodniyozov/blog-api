@@ -34,6 +34,7 @@ public class SeedService : ISeedService
                 var users = await DeserializeJsonToUsers(response);
 
                 userRepository.Create(users);
+                await uow.SaveChangesAsync();
             }
         }
 
@@ -88,7 +89,6 @@ public class SeedService : ISeedService
 
             var user = new User()
             {
-                Id = u.Id,
                 Address = $"{u.Address.City} {u.Address.Street}",
                 CompanyName = u.Company.Name,
                 Email = u.Email,
@@ -113,7 +113,7 @@ public class SeedService : ISeedService
                 new
                 {
                     UserId = 0,
-                    Id = 1,
+                    Id = 0,
                     Title = "",
                     Body = ""
                 }
@@ -128,7 +128,6 @@ public class SeedService : ISeedService
         {
             var post = new Post()
             {
-                Id = p.Id,
                 UserId = p.UserId,
                 Body = p.Body,
                 Title = p.Title
